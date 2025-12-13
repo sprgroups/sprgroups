@@ -11,6 +11,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest # Standard Linux runner
 
+    permissions: # <-- ADD THIS BLOCK
+      contents: write # Allows the action to push to the repo (gh-pages branch)
+      pages: write    # Required for some newer GH Pages configurations
+      id-token: write # Required for deployment tokens
+
     steps:
       # 2. Check out the code
       - name: Checkout 
