@@ -1,0 +1,42 @@
+name: Build and Deploy to GitHub Pages
+
+# 1. Trigger the workflow when code is merged into the 'main' branch
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering from the GitHub UI
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # Standard Linux runner
+
+    steps:
+      # 2. Check out the code
+      - name: Checkout 
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed for gh-pages history
+
+      # 3. Setup Node.js environment
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use your project's Node version
+
+      # 4. Install dependencies and run the build command
+      - name: Install dependencies and Build
+        run: |
+          npm install
+          npm run build # This command creates the 'dist' folder (or 'build')
+
+      # 5. Deploy the static files using the gh-pages action
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # Your GitHub Pages token is automatically provided as 'GITHUB_TOKEN'
+          github_token: ${{ secrets.GITHUB_TOKEN }} 
+          publish_dir: ./dist # Must match the directory created by 'npm run build'
+          publish_branch: gh-pages # Target branch for deployment
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
