@@ -232,5 +232,5 @@ export default defineConfig({
 		}
 	},
 	//vb REPLACE 'my-repo-name' WITH YOUR ACTUAL GITHUB REPO NAME
-  	base: "/sprgroups/"
+  	base: "/"
 });
