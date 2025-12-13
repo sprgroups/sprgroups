@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;700&display=swap');
+
+:root {
+  --background: 240 5% 96%; /* Light Gray */
+  --foreground: 240 10% 3.9%; /* Dark Gray */
+  --card: 240 4.8% 95.9%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5% 64.9%;
+  --radius: 0.5rem;
+  --brand-orange: 24 95% 53%;
+  --brand-blue: 221 83% 53%;
+}
+
+.dark {
+  --background: 240 10% 3.9%; /* Dark Gray */
+  --foreground: 0 0% 98%; /* Almost White */
+  --card: 240 3.7% 15.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+}
+
+body {
+  font-family: 'Poppins', 'Noto Sans Tamil', sans-serif;
+  @apply bg-background text-foreground;
+}
+
+.hero-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, hsl(var(--brand-orange) / 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, hsl(var(--brand-blue) / 0.05) 0%, transparent 50%);
+}
+
+.food-gradient {
+  background: linear-gradient(135deg, hsl(var(--brand-orange)) 0%, hsl(var(--brand-blue)) 100%);
+}
+
+.spice-shadow {
+  box-shadow: 0 20px 40px hsl(var(--brand-orange) / 0.1), 0 10px 20px hsl(var(--brand-blue) / 0.05);
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  from { box-shadow: 0 0 20px hsl(var(--brand-orange) / 0.4); }
+  to { box-shadow: 0 0 40px hsl(var(--brand-orange) / 0.8); }
+}
